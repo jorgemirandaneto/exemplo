@@ -9,11 +9,10 @@ jobs:
      - run: |         
          docker info
          docker build -t aspnetapp -f Dockerfile .
-
      # deploy the image
      - run: |         
-         docker login --username=jorgemirandaneto@gmail.com --password=e2590a2a-4184-45b8-8f11-ac16d3866852 registry.heroku.com
-         docker tag aspnetapp registry.heroku.com/exemplo-teste/web
-         docker push registry.heroku.com/exemplo-teste/web                
+         docker login --username=$HEROKU_USERNAME --password=$HEROKU_API_KEY registry.heroku.com
+         docker tag aspnetapp registry.heroku.com/$HEROKU_APP_NAME/web
+         docker push registry.heroku.com/$HEROKU_APP_NAME/web                
          curl https://cli-assets.heroku.com/install.sh | sh
-         heroku container:release web -a exemplo-teste
+         heroku container:release web -a $HEROKU_APP_NAME
