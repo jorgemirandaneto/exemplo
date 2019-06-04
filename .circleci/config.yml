@@ -12,7 +12,7 @@ jobs:
 
      # deploy the image
      - run: |         
-         docker login --username=jorgemirandaneto@gmail.com --password=miranda130389 registry.heroku.com
+         docker login --username=jorgemirandaneto@gmail.com --password=e2590a2a-4184-45b8-8f11-ac16d3866852 registry.heroku.com
          docker tag aspnetapp registry.heroku.com/exemplo-teste/web
          docker push registry.heroku.com/exemplo-teste/web                
          curl https://cli-assets.heroku.com/install.sh | sh
